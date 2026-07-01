@@ -19,8 +19,8 @@ Built with a stunning glassmorphism interface and powered by a robust machine le
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/mafazsiddi/plant-scanner.git
-   cd plant-scanner
+   git clone https://github.com/mafazsiddi/Lumina.git
+   cd Lumina
    ```
 
 2. Run the application (Windows):
