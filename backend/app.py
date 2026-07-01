@@ -25,13 +25,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL_PATH = os.path.join(BASE_DIR, 'plant_model.h5')
 CLASS_NAMES_PATH = os.path.join(BASE_DIR, 'class_names.pkl')
 
+model_error = None
 try:
     model = tf.keras.models.load_model(MODEL_PATH)
     with open(CLASS_NAMES_PATH, 'rb') as f:
         class_names = pickle.load(f)
     print("Model and class names loaded successfully.")
 except Exception as e:
-    print(f"Error loading model or class names: {e}")
+    import traceback
+    model_error = f"{type(e).__name__}: {str(e)}\n{traceback.format_exc()}"
+    print(f"Error loading model or class names: {model_error}")
     model = None
     class_names = []
 
@@ -52,7 +55,7 @@ def get_plant_data(plant_id):
 @app.post("/scan")
 async def scan_plant(file: UploadFile = File(...)):
     if model is None:
-        return {"error": "Model not loaded properly"}
+        return {"error": f"Model not loaded properly. Diagnostic details: {model_error}"}
         
     contents = await file.read()
     img = Image.open(io.BytesIO(contents)).convert('RGB')
