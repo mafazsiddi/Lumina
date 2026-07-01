@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData();
             formData.append('file', imageBlob, 'capture.jpg');
 
-            const response = await fetch('http://127.0.0.1:8000/scan', {
+            const response = await fetch('https://lumina-4cu9.onrender.com', {
                 method: 'POST',
                 body: formData
             });
