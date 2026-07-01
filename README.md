@@ -19,7 +19,7 @@ Built with a stunning glassmorphism interface and powered by a robust machine le
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/plant-scanner.git
+   git clone https://github.com/mafazsiddi/plant-scanner.git
    cd plant-scanner
    ```
 
