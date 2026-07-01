@@ -12,7 +12,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Raleway", sans-serif;
+    font-family: "Bricolage Grotesque", sans-serif;
 }
 
 body {
@@ -50,7 +50,7 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 4px;
 }
 
 .logo h1 {
