@@ -71,13 +71,16 @@ try:
     model = PlantModel(num_classes=num_classes)
     
     # 3. Load state dict from HDF5 file
+    model_state_dict = model.state_dict()
     state_dict = {}
     with h5py.File(MODEL_PATH, 'r') as f:
-        for key in f.keys():
-            # Load weights as PyTorch tensor
-            state_dict[key] = torch.from_numpy(f[key][:])
+        for key in model_state_dict.keys():
+            if key in f:
+                state_dict[key] = torch.from_numpy(np.array(f[key]))
+            else:
+                print(f"Warning: Key {key} not found in model file.")
             
-    model.load_state_dict(state_dict)
+    model.load_state_dict(state_dict, strict=False)
     model.eval()  # Set to evaluation mode
     print("PyTorch model and class names loaded successfully.")
 except Exception as e:
