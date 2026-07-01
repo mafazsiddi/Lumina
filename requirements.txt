@@ -1,4 +1,7 @@
-tensorflow
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+torchvision
+h5py
 opencv-python-headless
 pillow
 numpy
